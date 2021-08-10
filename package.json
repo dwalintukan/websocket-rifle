@@ -1,0 +1,16 @@
+{
+  "name": "websocket-rifle",
+  "version": "1.0.0",
+  "description": "Websocket tester",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Deric Walintukan <deric.walintukan@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^8.3.2",
+    "websocket": "^1.0.34"
+  }
+}
