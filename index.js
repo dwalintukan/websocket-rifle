@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid')
 // Config
 const WS_ENDPOINT = 'ws://localhost:4000/socket/websocket'
 const LIVE_STREAM_ID = 'GeEk8y'
-const MAX_CONNECTIONS = 1000
+const MAX_CONNECTIONS = 10
 
 // State
 const results = {}
@@ -63,7 +63,7 @@ const onMessage = (message) => {
 const constructUrl = () => {
   const url = new URL(WS_ENDPOINT)
   url.search = `?guest_id=${uuidv4()}`
-  return url
+  return url.toString()
 }
 
 const connectToLiveStreamChannel = () => {
