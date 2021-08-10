@@ -45,7 +45,6 @@ const report = () => {
     console.log(`SUCCESS: ${successCount}`)
     console.log(`FAILURE: ${failureCount}`)
     console.log(results)
-    console.log('===================')
   }
 }
 
@@ -70,11 +69,11 @@ const connectToLiveStreamChannel = () => {
   const client = new WebSocketClient()
   client.on('connect', (connection) => onConnect(connection))
   client.on('connectFailed', (error) => onConnectFailed(error))
-  client.connect(constructUrl());
+  client.connect(constructUrl())
+  curr++
 }
 
 // Run
 for (i = 0; i < MAX_CONNECTIONS; i++) {
   connectToLiveStreamChannel()
-  curr++
 }
