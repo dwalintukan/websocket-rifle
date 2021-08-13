@@ -2,9 +2,9 @@ const WebSocketClient = require('websocket').client
 const { v4: uuidv4 } = require('uuid')
 
 // Config
-const WS_ENDPOINT = 'ws://localhost:4000/socket/websocket'
+const WS_ENDPOINT = 'wss://cluster-worker.sandbox.fireworktv.com/socket/websocket'
 const LIVE_STREAM_ID = '95D10o'
-const MAX_CONNECTIONS = 10
+const MAX_CONNECTIONS = 10000
 
 // State
 const results = {}
@@ -45,6 +45,9 @@ const report = () => {
     console.log(`SUCCESS: ${successCount}`)
     console.log(`FAILURE: ${failureCount}`)
     console.log(results)
+
+    const total = Object.keys(results).reduce((acc, k) => acc + results[k], 0)
+    console.log(`TOTAL: ${total}`)
   }
 }
 
@@ -52,7 +55,7 @@ const onMessage = (message) => {
   if (message.type === 'utf8') {
     const json = JSON.parse(message.utf8Data)
     if (json.event === "join_batch") {
-      const count = json.payload.recent_join
+      const count = json.payload.batch_count
       results[json.payload.id] = count
       report()
     }
