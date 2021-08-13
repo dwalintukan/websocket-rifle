@@ -1,9 +1,9 @@
-var WebSocketClient = require('websocket').client
+const WebSocketClient = require('websocket').client
 const { v4: uuidv4 } = require('uuid')
 
 // Config
 const WS_ENDPOINT = 'ws://localhost:4000/socket/websocket'
-const LIVE_STREAM_ID = 'GeEk8y'
+const LIVE_STREAM_ID = '95D10o'
 const MAX_CONNECTIONS = 10
 
 // State
